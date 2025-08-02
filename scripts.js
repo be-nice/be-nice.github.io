@@ -1,18 +1,26 @@
 function showFullscreen(section) {
   const portDiv = document.getElementById("portfolio");
   const streamDiv = document.getElementById("streaming");
+  const schedule = document.getElementById("schedule-grid");
 
-  portDiv.classList.remove("hidden", "fullscreen");
-  streamDiv.classList.remove("hidden", "fullscreen");
+  resetLayout();
 
   if (section === "streaming") {
     portDiv.classList.add("hidden");
     streamDiv.classList.add("fullscreen");
+    schedule.classList.add("hidden");
     location.hash = "#/streaming";
   } else if (section === "portfolio") {
     streamDiv.classList.add("hidden");
     portDiv.classList.add("fullscreen");
+    schedule.classList.add("hidden");
     location.hash = "#/portfolio";
+  } else if (section === "schedule-grid") {
+    streamDiv.classList.add("hidden");
+    portDiv.classList.add("hidden");
+    schedule.classList.add("fullscreen");
+    schedule.classList.remove("hidden");
+    location.hash = "#/schedule";
   } else {
     location.hash = "#/";
   }
@@ -21,9 +29,12 @@ function showFullscreen(section) {
 function resetLayout() {
   const portDiv = document.getElementById("portfolio");
   const streamDiv = document.getElementById("streaming");
+  const schedule = document.getElementById("schedule-grid");
 
   portDiv.classList.remove("hidden", "fullscreen");
   streamDiv.classList.remove("hidden", "fullscreen");
+  schedule.classList.remove("fullscreen");
+  schedule.classList.add("hidden");
 }
 
 function applyHashState() {
@@ -33,6 +44,8 @@ function applyHashState() {
     showFullscreen("streaming");
   } else if (hash === "#/portfolio") {
     showFullscreen("portfolio");
+  } else if (hash === "#/schedule") {
+    showFullscreen("schedule-grid");
   } else {
     resetLayout();
   }
@@ -52,6 +65,8 @@ function createEmbed() {
 document.addEventListener("DOMContentLoaded", () => {
   const portDiv = document.getElementById("portfolio");
   const streamDiv = document.getElementById("streaming");
+  const btnSchedule = document.getElementById("btn_schedule");
+  const schedule = document.getElementById("schedule-grid");
 
   applyHashState();
   createEmbed();
@@ -69,6 +84,24 @@ document.addEventListener("DOMContentLoaded", () => {
       location.hash = "#/";
     } else {
       location.hash = "#/streaming";
+    }
+  });
+
+  btnSchedule.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (schedule.classList.contains("fullscreen")) {
+      location.hash = "#/";
+    } else {
+      location.hash = "#/schedule";
+    }
+  });
+
+  schedule.addEventListener("click", () => {
+    if (schedule.classList.contains("fullscreen")) {
+      location.hash = "#/";
+    } else {
+      location.hash = "#/schedule";
     }
   });
 });

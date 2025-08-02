@@ -28,6 +28,9 @@ body {
   flex: 0;
   opacity: 0;
   pointer-events: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .button {
@@ -49,7 +52,6 @@ body {
 }
 
 #streaming {
-  min-height: 100vh;
   background-color: darkblue;
 }
 
@@ -107,4 +109,42 @@ body {
   padding-top: 60px;
   flex-direction: row-reverse;
   justify-content: space-evenly;
+}
+
+#schedule-grid.fullscreen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 5px;
+  padding-left: 10px;
+  background-color: #121212;
+  color: white;
+  font-family: sans-serif;
+  overflow-y: none;
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.weekday {
+  min-width: 120px;
+  font-weight: bold;
+  color: #00ff88;
+  flex-shrink: 0;
+}
+
+.scheduled {
+  background-color: #1e1e1e;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  min-width: 100px;
 }
