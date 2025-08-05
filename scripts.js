@@ -108,11 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".time-block").forEach((el) => {
     const pdtTime = el.dataset.pdt;
     if (pdtTime) {
-      const dateInPDT = new Date(
-        new Date(pdtTime).toLocaleString("en-US", {
-          timeZone: "America/Los_Angeles",
-        }),
-      );
+      const dateInPDT = new Date(pdtTime);
 
       const localTimeStr = dateInPDT.toLocaleTimeString([], {
         hour: "2-digit",
