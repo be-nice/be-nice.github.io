@@ -148,3 +148,42 @@ body {
   text-align: center;
   min-width: 100px;
 }
+
+@media (max-width: 768px) {
+  #stream_button_wrapper {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    justify-items: center;
+  }
+
+  .button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #schedule-grid {
+    padding: 10px;
+    gap: 16px;
+  }
+
+  .schedule-row {
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+  }
+
+  .weekday {
+    min-width: auto;
+    font-size: 1.1rem;
+  }
+
+  .scheduled {
+    min-width: auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+  }
+}
