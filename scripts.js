@@ -2,6 +2,7 @@ function showFullscreen(section) {
   const portDiv = document.getElementById("portfolio");
   const streamDiv = document.getElementById("streaming");
   const schedule = document.getElementById("schedule-grid");
+  const commands = document.getElementById("commands-page");
 
   resetLayout();
 
@@ -21,6 +22,12 @@ function showFullscreen(section) {
     schedule.classList.add("fullscreen");
     schedule.classList.remove("hidden");
     location.hash = "#/schedule";
+  } else if (section === "commands") {
+    streamDiv.classList.add("hidden");
+    portDiv.classList.add("hidden");
+    commands.classList.add("fullscreen");
+    commands.classList.remove("hidden");
+    location.hash = "#/commands";
   } else {
     location.hash = "#/";
   }
@@ -30,11 +37,14 @@ function resetLayout() {
   const portDiv = document.getElementById("portfolio");
   const streamDiv = document.getElementById("streaming");
   const schedule = document.getElementById("schedule-grid");
+  const commands = document.getElementById("commands-page");
 
   portDiv.classList.remove("hidden", "fullscreen");
   streamDiv.classList.remove("hidden", "fullscreen");
   schedule.classList.remove("fullscreen");
   schedule.classList.add("hidden");
+  commands.classList.remove("fullscreen");
+  commands.classList.add("hidden");
 }
 
 function applyHashState() {
@@ -46,6 +56,8 @@ function applyHashState() {
     showFullscreen("portfolio");
   } else if (hash === "#/schedule") {
     showFullscreen("schedule-grid");
+  } else if (hash === "#/commands") {
+    showFullscreen("commands");
   } else {
     resetLayout();
   }
@@ -67,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const streamDiv = document.getElementById("streaming");
   const btnSchedule = document.getElementById("btn_schedule");
   const schedule = document.getElementById("schedule-grid");
+  const commands = document.getElementById("commands-page");
+  const btnCommands = document.getElementById("btn_commands");
 
   applyHashState();
   createEmbed();
@@ -102,6 +116,24 @@ document.addEventListener("DOMContentLoaded", () => {
       location.hash = "#/";
     } else {
       location.hash = "#/schedule";
+    }
+  });
+
+  btnCommands.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (commands.classList.contains("fullscreen")) {
+      location.hash = "#/";
+    } else {
+      location.hash = "#/commands";
+    }
+  });
+
+  commands.addEventListener("click", () => {
+    if (commands.classList.contains("fullscreen")) {
+      location.hash = "#/";
+    } else {
+      location.hash = "#/commands";
     }
   });
 

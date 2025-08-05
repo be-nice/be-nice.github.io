@@ -159,6 +159,50 @@ body {
   color: #aaa;
 }
 
+#commands-page {
+  max-height: 0;
+  height: 0;
+}
+
+#commands-page.fullscreen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+  padding-left: 15px;
+  background-color: #121212;
+  color: white;
+  font-family: sans-serif;
+  overflow-y: auto;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.command-block {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  max-width: 800px;
+}
+
+.command-block h3 {
+  color: #00ff88;
+  margin: 0;
+}
+
+.command-block h5 {
+  margin: 4px 0;
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.command-block p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
 @media (max-width: 768px) {
   #stream_button_wrapper {
     grid-template-columns: 1fr;
