@@ -104,6 +104,24 @@ document.addEventListener("DOMContentLoaded", () => {
       location.hash = "#/schedule";
     }
   });
+
+  document.querySelectorAll(".time-block").forEach((el) => {
+    const pdtTime = el.dataset.pdt;
+    if (pdtTime) {
+      const dateInPDT = new Date(
+        new Date(pdtTime).toLocaleString("en-US", {
+          timeZone: "America/Los_Angeles",
+        }),
+      );
+
+      const localTimeStr = dateInPDT.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      el.textContent = localTimeStr;
+    }
+  });
 });
 
 window.addEventListener("hashchange", applyHashState);
